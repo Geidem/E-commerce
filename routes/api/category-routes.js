@@ -18,7 +18,11 @@ router.get('/:id', (req, res) => {
     },
     include: [Product],
   })
+  .then ((category) => res.json(category))
+  .catch((err) => res.status(400).json(err));
 });
+
+
 
 router.post('/', (req, res) => {
   Category.create(req.body)
